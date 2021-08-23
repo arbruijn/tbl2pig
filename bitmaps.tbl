@@ -1,0 +1,1579 @@
+; This file contains the bitmap initialization data used to load bitmap data,
+;  objects, and possibly more! for DESCENT
+
+; everything beginning with the ";" is a comment
+
+; $Source: f:/miner/game/rcs/bitmaps.tbl $
+; $Revision: 1.959 $
+; $Author: adam $
+; $Date: 1995/05/30 18:22:55 $
+
+; FLAGS
+; -----
+; $ROBOT	filename of robot file to load follows.
+; $COCKPIT	bitmap used for cockpit.
+; $WEAPON_TYPE	bitmap used for different weapons.
+; $TEXTURES	bitmaps which load into the editor as useable textures.
+; $VCLIP	bitmaps loaded into Vclip[] (video clip) animations.
+; $EFFECTS	bitmaps used as icons in editor.  Correspond to ECLIP effects
+; $WALL_ANIMS	bitmaps of undamaged walls useable in editor. 
+; $DOOR_ANIMS	bitmaps of closed doors useable in editor.
+; $ECLIP	bitmaps loaded into Eclip[] (effect clip) animations.
+; $DCLIP	bitmaps loaded into Dclip[] (door clip) animations.
+; $WCLIP	bitmaps loaded into Wclip[] (wall clip) animations.
+; $ROBOTEX	bitmaps used temporarily for Matt's polygon objects.
+
+; Parameters
+; ----------
+;
+; For bitmaps:
+; num=		bitmap number.
+; type=		bitmap type. (texture, bitmap)
+; reflect=	bitmap reflectivity.
+; lighting=	bitmap lighting value.
+; 
+; For vclips, eclips, dclips, wclips:
+;
+; clip_num=	Number of the clip in the respective array.
+; frames=	Number of frames. 
+; time=		Time for entire animation.
+; open_sound=	Number of the sound to play when door opens (wclip only)
+; close_sound=	Number of the sound to play when door closes (wclip only)
+; 
+;
+; For objects:
+;
+; exp_vclip=	Which vclip to use for explosion when object dies.
+; exp_sound=	Which sound to play when object dies.
+; lighting=	Object lighting value. (0..1)
+; weapon_type=	0=laser, 1=missile, 2...6 drawn with blobs defined in $WEAPON_TYPES section
+;
+; Other parameters: (All set global variables)
+;
+; Num_robotex=
+; Num_effects=	
+; Num_door_anims=
+; Num_wall_anims=
+
+; contains_type = 1 if a robot, 0 if a powerup (default = 0)
+; contains_id = ID of _POWERUP_ to drop when this robot gets toasted.  Not WEAPON.  (It's ID of robot if contains_type == 1)
+; contains_prob = probability that one or more powerups/robots will be dropped (contains_prob/16 = prob, so 16 = always)
+; contains_count = max number of powerups/robots which get dropped
+
+$ROBOT robot09.pof  name="mech"		score_value=500 mass=4.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=22 strength=100 rbot010.bbm rbot011.bbm rbot012.bbm contains_id=10 contains_count=3 contains_prob=16 simple_model=robot09s.pof rbot010.bbm rbot011.bbm see_sound=172 attack_sound=172
+$ROBOT robot17.pof  name="green"	score_value=500 mass=1024.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=7 exp2_sound=20 lighting=0.6 strength=80 rbot006.bbm rbot008.bbm rbot009.bbm contains_id=2 contains_count=2 contains_prob=3 attack_type=1
+					contains_id=2 contains_count=1 contains_prob=3 simple_model=robot17s.pof rbot006.bbm rbot008.bbm rbot009.bbm see_sound=171 attack_sound=171
+$ROBOT robot22.pof  name="spider"	score_value=600 mass=4.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=60 exp2_sound=20 lighting=0.6 weapon_type=27 strength=110 rbot020.bbm rbot019.bbm rbot021.bbm rbot012.bbm contains_type=1 contains_id=14 contains_count=4 contains_prob=12 simple_model=robot22s.pof rbot020.bbm rbot019.bbm see_sound=168 attack_sound=168
+$ROBOT robot01.pof  name="josh"		score_value=200 mass=1.5 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=60 exp2_sound=20 lighting=0.6 weapon_type=5 strength=25 rbot012.bbm rbot031.bbm rbot032.bbm contains_id=1 contains_count=1 contains_prob=3 simple_model=robot01s.pof rbot031.bbm see_sound=170 attack_sound=170
+$ROBOT	robot23.pof  name="violet"	rbot012.bbm rbot035.bbm rbot036.bbm rbot037.bbm \
+					score_value=300 mass=2.5 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=7 exp2_sound=20 \
+					lighting=0.6 weapon_type=10 strength=35 \
+					contains_id=2 contains_count=1 contains_prob=3 \
+					simple_model=robot23s.pof rbot035.bbm rbot036.bbm rbot037.bbm see_sound=180 attack_sound=180
+@$ROBOT robot37.pof  name="clkvulc"	score_value=600 mass=8.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=7 exp2_sound=20 lighting=0.6 weapon_type=11 strength=100 rbot054.bbm rbot054.bbm rbot054.bbm rbot054.bbm rbot054.bbm contains_id=13 contains_count=1 contains_prob=16 simple_model=robot37s.pof %49 rbot052.bbm %32 rbot012.bbm rbot053.bbm \
+					see_sound=169 attack_sound=203 cloak_type=1 contains_id=23 contains_count=1 contains_prob=13
+@$ROBOT robot09.pof  name="clkmech"	score_value=700 mass=4.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=22 strength=150 rbot054.bbm rbot054.bbm rbot054.bbm contains_id=10 contains_count=3 contains_prob=16 simple_model=robot09s.pof rbot010.bbm rbot011.bbm see_sound=172 attack_sound=172 cloak_type=1 \
+					contains_id=10 contains_count=3 contains_prob=16
+@$ROBOT robot26.pof  name="brain"	score_value=400 mass=2.75 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=10 strength=250 rbot012.bbm %31 metl009.bbm rbot042.bbm see_sound=201
+@$ROBOT robot27.pof  name="onearm"	score_value=400 mass=2.75 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=24 strength=65 rbot012.bbm metl009.bbm %31 rbot018.bbm rbot020.bbm simple_model=robot27s.pof rbot012.bbm metl009.bbm %31 rbot018.bbm rbot020.bbm see_sound=209 attack_sound=209
+@$ROBOT robot42.pof  name="plasguy"	score_value=1000  mass=4.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=26 strength=150 rbot058.bbm %49 rbot059.bbm rbot060.bbm glow04.bbm rbot012.bbm contains_id=15 contains_count=1 contains_prob=16 simple_model=robot42s.pof rbot058.bbm %49 rbot059.bbm glow04.bbm see_sound=211 attack_sound=211
+@$ROBOT robot08.pof  name="toaster"	score_value=200 mass=2.75 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=10 strength=150 %31 rbot012.bbm metl021.bbm metl016.bbm glow04.bbm \
+					contains_id=1 contains_count=1 contains_prob=10 see_sound=219 attack_sound=219
+@$ROBOT robot16.pof  name="bird"	score_value=300 mass=2.75 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=10 strength=70 rbot007.bbm glow04.bbm rbot012.bbm \
+					contains_id=2 contains_count=1 contains_prob=3 see_sound=204 attack_sound=204
+@$ROBOT robot16.pof  name="mislbird"	score_value=800 mass=2.75 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=22 strength=150 rbot065.bbm glow04.bbm rbot012.bbm see_sound=202 attack_sound=202 contains_id=10 contains_count=4 contains_prob=16
+@$ROBOT robot31.pof  name="splitpod"  	score_value=100 mass=2.75 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=10 strength=35 %32
+$ROBOT robot32.pof  name="smspider"  	score_value=100 mass=1.00 drag=0.010 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=24 strength=20 rbot020.bbm rbot019.bbm rbot012.bbm simple_model=robot32s.pof rbot020.bbm rbot019.bbm rbot012.bbm see_sound=181 attack_sound=181
+@$ROBOT robot43.pof   name="miniboss"	score_value=2000 mass=30.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=14 strength=400 rbot064.bbm %49 missile.bbm contains_id=16 contains_count=1 contains_prob=16 see_sound=220 attack_sound=220
+;used to be sounds 174 for miniboss
+$ROBOT robot09.pof  name="suprmech"	score_value=1500 mass=4.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=21 strength=325 rbot048.bbm rbot049.bbm rbot012.bbm contains_id=18 contains_count=3 contains_prob=16 simple_model=robot09s.pof rbot048.bbm rbot049.bbm see_sound=176 attack_sound=176
+$ROBOT boss01.pof   name="boss1"	score_value=5000 mass=30.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=17 strength=2000 boss=1 rbot051.bbm %49 missile.bbm
+$ROBOT robot35.pof  name="cloakgrn"	score_value=1000 mass=2048.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=7 exp2_sound=20 lighting=0.6 strength=100 cloak_type=1 rbot054.bbm attack_type=1 simple_model=robot35s.pof rbot054.bbm contains_id=23 contains_count=1 contains_prob=10 see_sound=168 attack_sound=168 claw_sound=168
+$ROBOT robot37.pof  name="vulcnguy"	score_value=1000 mass=8.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=7 exp2_sound=20 lighting=0.6 weapon_type=11 strength=50 %49 rbot052.bbm %32 rbot012.bbm rbot053.bbm contains_id=13 contains_count=1 contains_prob=11 simple_model=robot37s.pof %49 rbot052.bbm %32 rbot012.bbm rbot053.bbm see_sound=169 attack_sound=169
+$ROBOT robot38.pof  name="rifleman"	score_value=500  mass=4.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=25 strength=70 rbot012.bbm rbot055.bbm %31 contains_id=2 contains_count=1 contains_prob=3 simple_model=robot38s.pof rbot055.bbm %31 see_sound=173 attack_sound=173
+@$ROBOT robot39.pof  name="fourclaw"	score_value=800  mass=2048.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 strength=100 metl009.bbm %31 rbot018.bbm rbot020.bbm contains_id=2 contains_count=1 contains_prob=3 attack_type=1 simple_model=robot39s.pof metl009.bbm %31 rbot018.bbm rbot020.bbm see_sound=178 attack_sound=178 claw_sound=178
+@$ROBOT robot40.pof  name="quadlasr"	score_value=700  mass=4.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=25 strength=70 rbot052.bbm rbot012.bbm rbot053.bbm %49 contains_id=12 contains_count=1 contains_prob=16 simple_model=robot40s.pof rbot052.bbm rbot012.bbm rbot053.bbm %49 see_sound=205 attack_sound=205
+@$ROBOT boss02.pof   name="boss2"	score_value=10000 mass=30.0 drag=0.033 exp1_vclip=2 exp1_sound=21 exp2_vclip=0 exp2_sound=20 lighting=0.6 weapon_type=28 strength=5000 boss=2 missile.bbm rbot012.bbm %53 %54
+
+; fov
+; firing wait
+; rapid fire
+; turn time
+; fire power
+; shield
+; max speed
+; circle distance
+; evade speed (0=slowly 4="really darn fast" says Mike)
+
+;			SKILL	SKILL	SKILL	SKILL	SKILL
+;			LEV 0	LEV 1	LEV 2	LEV 3	LEV 4
+
+;mech
+$ROBOT_AI	0	40	70	135	135	179		\
+			5.0	4.0	3.0	2.0	1.0		\
+			1	1	2	3	3		\
+			0.8	0.7	0.6	0.5	0.4		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			10.0	15.0	20.0	25.0	30.0		\
+			30.0	30.0	30.0	30.0	30.0		\
+			0	0	1	1	3		; evade speed
+						
+;green guy
+$ROBOT_AI	1	70	80	90	90	179		\
+			2.5	2.0	1.5	1.0	1.0		\
+			1	1	2	3	4		\
+			0.6	0.5	0.4	0.3	0.2		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	2.0	3.0	5.0		\
+			35.0	40.0	45.0	50.0	65.0		\
+			20.0	20.0	20.0	20.0	20.0		\
+			1	3	4	5	5		  ; evade speed
+
+;red spider
+$ROBOT_AI	2	70	80	90	90	179		\
+			3.0	2.0	1.5	1.25	1.25		\
+			1	2	3	4	6		\
+			0.5	0.4	0.3	0.2	0.2		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			20.0	20.0	20.0	30.0	35.0		\
+			15.0	15.0	15.0	15.0	15.0		\
+			1	2	3	3	4		  ; evade speed
+
+;josh
+$ROBOT_AI	3	80	100	120	120	179		\
+			3.5	2.5	1.25	1.0	1.0		\
+			1	1	2	3	5		\
+			0.4	0.3	0.2	0.2	0.2		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			25.0	30.0	35.0	40.0	60.0		\
+			10.0	10.0	10.0	10.0	10.0		\
+			0	1	2	2	3		  ; evade speed
+
+;violet "spike"
+$ROBOT_AI	4	80	90 	100	100	179		\
+			4.0	3.0	1.5	1.0	1.0		\
+			1	2	2	3	5		\
+			0.6	0.4	0.3	0.3	0.3		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			20.0	25.0	30.0	35.0	50.0		\
+			10.0	10.0	10.0	10.0	10.0		\
+			0	2	2	3	4		  ; evade speed
+
+
+;cloak vulcan guy
+$ROBOT_AI	5	70	80	90	90	179		\
+		  	2.5	2.0	1.5	1.0	0.75		\
+			3	5	8	8	8		\
+			0.6	0.5	0.4	0.3	0.2		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	2.0	3.0	5.0		\
+			20.0	30.0	40.0	40.0	60.0		\
+			20.0	20.0	20.0	20.0	20.0		\
+			1	2	3	4	5		  ; evade speed
+
+;cloak mech
+$ROBOT_AI	6	40	70	135	135	179		\
+			7.0	5.0	3.0	1.0	1.0		\
+			1	1	2	3	4		\
+			0.8	0.7	0.6	0.5	0.4		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			10.0	15.0	20.0	25.0	30.0		\
+			30.0	30.0	30.0	30.0	30.0		\
+			0	0	1	1	3		; evade speed
+
+
+; brain
+@$ROBOT_AI	7	140	160	179	179	179		\
+			3.0	2.5	2.0	2.0	1.0		\
+			3	3	4	4	4		\
+			0.5	0.4	0.3	0.3	0.3		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			25.0	30.0	35.0	40.0	45.0		\
+			10.0	10.0	10.0	10.0	10.0		\
+			0	1	2	2	3		  ; evade speed
+
+;one arm
+@$ROBOT_AI	8	60	80	120	179	179	\
+			1.5	1.25	1.0	1.0	1.0		\
+			1	2	2	3	4		\
+			0.3	0.2	0.2	0.1	0.1		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			50.0	60.0	70.0	80.0	90.0		\
+			 5.0	 5.0	 5.0	 5.0	 5.0		\
+			1	2	3	4	4		  ; evade speed
+
+;plasguy
+@$ROBOT_AI	9	80	90 	100	100	179		\
+		 	1.0	.75	.75	.75	.75		\
+			2	2	3	4	5		\
+			0.6	0.4	0.3	0.3	0.3		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			20.0	25.0	30.0	35.0	50.0		\
+			10.0	10.0	10.0	10.0	10.0		\
+			1	2	2	3	4		  ; evade speed
+;toaster
+@$ROBOT_AI	10	80	100	100	100	179		\
+			3.0	2.5	2.0	2.0	1.0		\
+			1	1	2	3	5		\
+			0.3	0.3	0.3	0.3	0.3		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			20.0	30.0	35.0	40.0	70.0		\
+			5.0	5.0	5.0	5.0	5.0		\
+			0	0	1	2	3		  ; evade speed
+
+;bird
+@$ROBOT_AI	11	70	90	90	120	179	\
+			1.5	1.25	1.0	1.0	1.0		\
+			3	4	4	5	7		\
+			0.3	0.3	0.3	0.3	0.3		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			15.0	15.0	20.0	30.0	40.0		\
+			7.0	7.0	7.0	7.0	7.0		\
+			0	1	2	4	5		  ; evade speed
+
+;mislbird
+@$ROBOT_AI	12	70	90	90	120	179	\
+			1.5	1.5	1.25	1.25	1.0		\
+			2	3	3	4	5		\
+			0.3	0.3	0.3	0.3	0.3		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			15.0	15.0	20.0	30.0	40.0		\
+			7.0	7.0	7.0	7.0	7.0		\
+			0	1	2	4	5		  ; evade speed
+
+;splitter pods
+$ROBOT_AI	13	140	170	170	170	179		\
+			3.0	2.5	2.0	2.0	1.0		\
+			1	1	1	2	2		\
+			0.1	0.1	0.1	0.1	0.1		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			35.0	40.0	45.0	50.0	60.0		\
+			4.0	4.0	4.0	4.0	4.0		\
+			0	0	1	1	2		  ; evade speed
+
+;small spider
+$ROBOT_AI	14	140	170	170	170	179		\
+			3.0	2.5	1.75	1.0	0.5		\
+			1	1	2	3	6		\
+			0.1	0.1	0.1	0.1	0.1		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			35.0	40.0	50.0	60.0	70.0		\
+			10.0	10.0	10.0	10.0	10.0		\
+			0	0	1	1	2		  ; evade speed
+
+;miniboss
+$ROBOT_AI	15	100	125	150	179	179		\
+		 	3.0	2.0	2.5	2.0	1.5		\
+			1	1	2	2	3		\
+			0.8	0.7	0.6	0.5	0.5		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			10.0	12.0	13.0	15.0	20.0		\
+			30.0	30.0	30.0	30.0	30.0		\
+			1	2	2	3	4		; evade speed
+
+;super mech
+$ROBOT_AI	16	100	125	150	179	179		\
+		 	4.0	3.0	3.0	2.0	1.0		\
+			1	1	2	3	3		\
+			0.8	0.7	0.6	0.5	0.5		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			10.0	12.0	13.0	15.0	20.0		\
+			30.0	30.0	30.0	30.0	30.0		\
+			1	2	2	3	4		; evade speed
+
+;shareware boss (level 8)
+; Note: His speed reduced to 0 by MK on 12/01/94.
+$ROBOT_AI	17	179	179	179	179	179		\
+			3.0	2.5	2.0	1.5	1.0		\
+			2	2	3	4	5		\
+			0.6	0.6	0.6	0.5	0.5		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			0.0	0.0	0.0	0.0	0.0		\
+			10.0	10.0	30.0	30.0	30.0		\
+			0	0	0	0	0		; evade speed
+
+;cloaked green
+$ROBOT_AI	18	70	80	90	90	179		\
+			3.5	3.0	2.5	1.0	1.0		\
+			1	1	2	3	5		\
+			0.6	0.5	0.4	0.3	0.2		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	2.0	3.0	5.0		\
+			20.0	30.0	40.0	40.0	60.0		\
+			20.0	20.0	20.0	20.0	20.0		\
+			0	1	3	5	5		  ; evade speed
+
+;vulcan guy
+$ROBOT_AI	19	70	80	90	90	179		\
+		  	2.5	2.0	1.5	1.0	1.0		\
+			3	5	8	13	18		\
+			0.6	0.5	0.4	0.3	0.2		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	2.0	3.0	5.0		\
+			30.0	40.0	50.0	60.0	70.0		\
+			20.0	20.0	20.0	20.0	20.0		\
+			1	2	3	4	5		  ; evade speed
+
+;rifleman 
+$ROBOT_AI	20	80	90 	100	100	179		\
+			4.0	3.0	2.0	1.0	1.0		\
+			1	1	2	3	5		\
+			0.6	0.4	0.3	0.3	0.3		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			20.0	25.0	30.0	35.0	50.0		\
+			10.0	10.0	10.0	10.0	10.0		\
+			1	2	2	3	4		  ; evade speed
+;fourclaw 
+@$ROBOT_AI	21	80	90 	100	100	179		\
+			4.0	3.0	1.5	1.0	1.0		\
+			1	1	2	3	5		\
+			0.6	0.5	0.4	0.2	0.1		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			40.0	50.0	60.0	70.0	90.0		\
+			10.0	10.0	10.0	10.0	10.0		\
+			1	2	2	3	4		  ; evade speed
+;quadlaser 
+@$ROBOT_AI	22	80	90 	100	100	179		\
+			1.5	1.25	1.0	1.0	1.0		\
+			3	4	4	5	7		\
+			0.6	0.4	0.3	0.3	0.3		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			20.0	25.0	30.0	35.0	50.0		\
+			10.0	10.0	10.0	10.0	10.0		\
+			1	2	2	3	4		  ; evade speed
+
+;bigboss (level ?)
+@$ROBOT_AI	23	179	179	179	179	179		\
+			7.0	5.0	4.0	3.0	2.0		\
+			1	1	1	1	2		\
+			0.6	0.6	0.6	0.5	0.5		\
+			1.0	1.0	1.0	1.0	1.0		\
+			1.0	1.0	1.0	1.0	1.0		\
+			60.0	60.0	70.0	80.0	90.0		\
+			10.0	10.0	30.0	30.0	30.0		\
+			0	0	0	0	0		; evade speed
+
+$OBJECT reactor.pof type=controlcen exp_vclip=3 exp_sound=33 lighting=0.6 \
+	%50 %51 %32 rmap03.bbm %52 \
+	dead_pof=reactor2.pof strength=200.1 rmap03.bbm rbot056.bbm rbot057.bbm 
+
+;the model that shows at the end of the exit tunnel
+$OBJECT	exit01.pof type=exit steel1.bbm rbot061.bbm rbot062.bbm  \
+	dead_pof=exit01d.pof steel1.bbm	rbot061.bbm rbot063.bbm
+
+$PLAYER_SHIP mass=4.0 drag=0.033 max_thrust=7.8		\
+	wiggle=0.5 max_rotthrust=0.14 			\
+	model=pship1.pof				\
+	glow04.bbm ship1-1.bbm ship1-2.bbm ship1-3.bbm	\
+	ship1-4.bbm ship1-5.bbm				\
+	dying_pof=pship1b.pof expl_vclip_num=58		\
+	simple_model=pship1s.pof			\
+	glow04.bbm ship1-1.bbm ship1-2.bbm ship1-3.bbm	\
+	ship1-4.bbm ship1-5.bbm				\
+	multi_textures ship2-4.bbm ship2-5.bbm 		\
+	ship3-4.bbm ship3-5.bbm ship4-4.bbm ship4-5.bbm \
+	ship5-4.bbm ship5-5.bbm ship6-4.bbm ship6-5.bbm \
+	ship7-4.bbm ship7-5.bbm ship8-4.bbm ship8-5.bbm 
+
+
+;------------------------------------------------------------------
+;; SOUND LIST
+;;
+;; No appropriate sounds available where DING.RAW is used.  Ugh.
+
+;;	      lomem
+;;     num   alt num	name		description
+
+$SOUND	10	18	laser03.raw	;SOUND_LASER_FIRED
+$SOUND	11	0	explode1.raw	;SOUND_LASER_HIT_WALL
+$SOUND	12	18	laser05.raw	
+$SOUND	13	16	laser03.raw	;more lasers
+$SOUND	14	16	laser04.raw
+$SOUND	15	16	laser02.raw
+$SOUND	16	0	laser01.raw
+
+$SOUND	17	0	ramfast.raw	;SOUND_ROBOT_HIT_PLAYER
+$SOUND	18	18	laser06.raw
+$SOUND	19	18	laser12.raw
+$SOUND	20	0	explode1.raw	;SOUND_ROBOT_HIT
+$SOUND	21	0	explode1.raw	;SOUND_ROBOT_DESTROYED
+$SOUND	22	18	laser07.raw
+$SOUND	23	16	flare.raw
+@$SOUND	24	0	fusion.raw	;Fusion cannon firing
+@$SOUND 25	0	plasma.raw	;Plasma cannon firing
+$SOUND	26	0	dropbomb.raw	;ProxBomb dropping
+$SOUND  27	0	doorhit.raw	;weapon hitting door
+$SOUND	28	0	explode1.raw	;weapon hitting wall
+
+$SOUND	30	0	explode1.raw	;SOUND_CONTROL_CENTER_HIT
+$SOUND	31	20	explode2.raw	;SOUND_CONTROL_CENTER_DESTROYED
+$SOUND	32	0	siren01.raw	;SOUND_CONTROL_CENTER_WARNING_SIREN
+$SOUND	33	20	nuke01.raw	;SOUND_MINE_BLEW_UP
+
+@$SOUND	34	0	fusion2a.raw
+@$SOUND	35	0	fusion2b.raw
+
+$SOUND	62	0	power04.raw	;SOUND_REFUEL_STATION_GIVING_FUEL
+
+$SOUND	70	0	ramfast.raw	;SOUND_PLAYER_HIT_WALL
+$SOUND	71	0	shit01.raw	;SOUND_PLAYER_GOT_HIT
+
+$SOUND	80	0	power03.raw	;SOUND_GOT_POWERUP_SHIELDS
+$SOUND	81	0	power03.raw	;SOUND_GOT_POWERUP_ENERGY
+@$SOUND	82	80	exlife.raw	;SOUND_GOT_POWERUP_EXTRA_LIFE
+$SOUND	83	0	power03.raw	;SOUND_GOT_POWERUP_LASER
+
+$SOUND	91	80	gothost.raw	;SOUND_HOSTAGE_RESCUED
+$SOUND	92	0	mtrl01.raw	;materialize
+$SOUND	93	92	mtrl02.raw	;powerup vanishing
+
+$SOUND	100	-1	count00.raw	;Countdown sounds
+$SOUND	101	-1	count01.raw
+$SOUND	102	-1	count02.raw
+$SOUND	103	-1	count03.raw	 
+$SOUND	104	-1	count04.raw
+$SOUND	105	-1	count05.raw
+$SOUND	106	-1	count06.raw
+$SOUND	107	-1	count07.raw
+$SOUND	108	-1	count08.raw
+$SOUND	109	-1	count09.raw
+$SOUND	113	-1	count10.raw
+$SOUND	114	0	count11.raw
+
+;VULCAN CANNON SOUND
+$SOUND	115	0	vulcan.raw	; sound of vulcan cannon
+
+$SOUND	117	118	message.raw	; Multiplayer: sound of message
+$SOUND	118	0	death.raw	; Multiplayer: sound of kill
+
+$SOUND	121	-1	fan01.raw
+$SOUND	122	0	misslock.raw
+
+;MISSILE SOUNDS
+$SOUND	130	0	missile1.raw	; sound of concussion/homing missile firing
+@$SOUND	131	0	missile1.raw	; sound of smart missile firing
+@$SOUND	132	0	missile3.raw	; sound of mega missile firing
+
+;DOOR SOUNDS
+$SOUND	140	142	door02.raw	; door type 1: opening
+$SOUND	141	143	apdoor.raw	;            : closing
+$SOUND	142	0	door1o.raw	; door type 2: opening
+$SOUND	143	0	door1c.raw	;            : closing
+$SOUND	144	142	door2o.raw	; door type 3: opening
+$SOUND	145	143	door2c.raw	;            : closing
+$SOUND	146	142	door3o.raw	; door type 4: opening
+$SOUND	147	143	door3c.raw	;            : closing
+@$SOUND	148	142	door4o.raw	; door type 5: opening
+@$SOUND	149	143	door4c.raw	;            : closing
+
+;PLAYER HITS LAVA/VOLATILE WALL
+$SOUND	151	0	lava.raw
+
+;MENU/COCKPIT SELECTION SOUNDS
+$SOUND	153	154	change1.raw	; sound of primary change
+$SOUND	154	0	change2.raw	; sound of secondary change
+$SOUND	155	0	message.raw	; sound of "weapon already armed"
+$SOUND	156	118	beep02.raw	; sound of "negative" selection (unavailable weapon, etc.)
+
+;MONITOR EXPLOSION SOUNDS
+$SOUND	157	20	monitor.raw	; monitor exploding
+
+;DEVICE SOUNDS
+$SOUND 	160	0	cloakon.raw	; sound of cloaking activated
+$SOUND	161	0	cloakoff.raw	; sound of cloaking deactivated
+@$SOUND	162	0	invon.raw	; sound of invuln. activated
+@$SOUND	163	0	invoff.raw	; sound of invuln. deactivated
+
+;GENERAL ROBOT SOUNDS
+$SOUND  168     180	robot14.raw     ; robot sound
+$SOUND  169     172	robot15.raw     ; robot sound
+$SOUND	170	180	robot01.raw	; robot sound
+$SOUND	171	172	robot02.raw	; robot sound
+$SOUND	172	0	robot03.raw	; robot sound
+$SOUND	173	172	robot04.raw	; robot sound
+$SOUND	174	180	robot05.raw	; robot sound
+$SOUND	175	172	robot06.raw	; robot sound
+$SOUND	176	180	robot07.raw	; robot sound
+$SOUND	177	172	robot08.raw	; robot sound
+$SOUND	178	180	robot09.raw	; robot sound
+$SOUND	179	172	robot10.raw	; robot sound
+$SOUND	180	0	robot11.raw	; robot sound
+$SOUND	181	172	robot12.raw	; robot sound
+$SOUND	182	180	robot13.raw	; robot sound
+
+$SOUND	183	0	boss01.raw	; sound of boss 1 "seeing player"
+$SOUND	184	183	boss03.raw	;                 "attacking"
+$SOUND	185	0	boss02.raw	;		  "dying"
+@$SOUND	186	183	boss04.raw	; sound of boss 2 "seeing player"
+@$SOUND	187	183	boss06.raw	;                 "attacking"
+@$SOUND	188	185	boss05.raw	;		  "dying"
+
+;TEARING METAL SOUNDS (when "clawing" robots hit player)
+$SOUND	190	191	tear01.raw	; tearing metal 1
+$SOUND	191	0	tear02.raw	; tearing metal 2
+
+;REGISTERED VOICES
+@$SOUND	200	-1	cheater.raw	; "cheater!"
+
+;MORE ROBOT NOISES
+$SOUND	201	172	robot17.raw
+$SOUND	202	180	robot16.raw
+$SOUND	203	172	robot19.raw	 
+$SOUND	204	180	robot20.raw
+$SOUND	205	172	robot21.raw
+;$SOUND	206	0	robot22.raw
+;$SOUND	207	0	robot23.raw
+;$SOUND	208	0	robot24.raw
+$SOUND	209	180	robot25.raw
+;$SOUND	210	0	robot26.raw
+$SOUND	211	172	robot27.raw
+;$SOUND	212	0	robot28.raw
+;$SOUND	213	0	robot29.raw
+;$SOUND	214	0	robot30.raw
+;$SOUND	215	0	robot31.raw
+;$SOUND	216	0	robot32.raw
+;$SOUND	217	0	robot33.raw
+;$SOUND	218	0	robot33.raw
+$SOUND	219	180	robot34.raw
+$SOUND	220	172	robot36.raw
+
+;------------------------------------------------------------------
+;MUSIC
+
+$FMBANK
+melodic.bnk drums.bnk id=0
+
+$SONGS
+descent.hmp	id=0	fmbank=0
+endlevel.hmp	id=1	fmbank=0
+credits.hmp	id=2	fmbank=0
+endgame.hmp	id=3	fmbank=0
+briefing.hmp	id=4	fmbank=0
+game01.hmp	id=5	fmbank=0
+game02.hmp	id=6	fmbank=0
+game03.hmp	id=7	fmbank=0
+game04.hmp	id=8	fmbank=0
+game05.hmp	id=9	fmbank=0
+game06.hmp	id=10	fmbank=0
+game07.hmp	id=11	fmbank=0
+game08.hmp	id=12	fmbank=0
+game09.hmp	id=13	fmbank=0
+game10.hmp	id=14	fmbank=0
+game12.hmp	id=15	fmbank=0
+game13.hmp	id=16	fmbank=0
+game14.hmp	id=17	fmbank=0
+game15.hmp	id=18	fmbank=0
+game16.hmp	id=19	fmbank=0
+game17.hmp	id=20	fmbank=0
+game18.hmp	id=21	fmbank=0
+
+;------------------------------------------------------------------
+
+$COCKPIT	
+;IMPORTANT: the order of these bitmap must match the constants in game.h
+cockpit.bbm		; Normal
+rearview.bbm		; rear view
+status.bbm		; the status bar
+
+;WARNING!!! HACK!!!! WARNING!!!!! In the gauges code, I had to let the
+;pig code know what abms are gauges, so if you change any of these GAUGES
+;filenames, make sure you update the list in piggy.c.... see john for details
+;WARNING!!! HACK!!!! WARNING!!!!! GAUGES !!!!!
+$GAUGES abm_flag=1
+gauge01.abm
+gauge02.bbm
+gauge03.bbm
+gauge04.bbm
+gauge05.bbm abm_flag=1
+gauge02.abm
+sbkb_on.bbm
+sbky_on.bbm
+sbkr_on.bbm
+sbkb_off.bbm
+sbky_off.bbm
+sbkr_off.bbm
+sbenergy.bbm
+lives.bbm abm_flag=1
+gauge06.abm abm_flag=1
+targ01.abm abm_flag=1
+targ02.abm abm_flag=1
+targ03.abm
+gauge16.bbm
+gauge17.bbm abm_flag=1
+targ04.abm abm_flag=1
+targ05.abm abm_flag=1
+targ06.abm abm_flag=1
+gauge18.abm
+;gauss1.bbm
+;helix1.bbm
+;phoenix1.bbm
+
+; For weapons, blob_size only works for blob_bmp types.
+
+; ---------- LASERS ----------
+; (0) Laser Level 1
+$WEAPON picture=gauge06.bbm weapon_pof=laser1-1.pof	weapon_pof_inner=laser1-2.pof lw_ratio=9.8	\
+	simple_model=laser11s.pof simple_model=laser12s.pof \
+	mass=0.5 drag=0.0 blob_size=0.0 strength=10 10 10 10 10  flash_vclip=11 	flash_size=1.0  flash_sound=13 robot_hit_vclip=59  wall_hit_vclip=1  robot_hit_sound=11 wall_hit_sound=28 impact_size=3.0  speed=120 120 120 120 120	\
+	lighted=0 lightcast=.75 \
+	energy_usage=0.5 ammo_usage=0.0 fire_wait=0.25 fire_count=1 lifetime=10.0
+
+; (1) Laser Level 2
+$WEAPON weapon_pof=laser2-1.pof	weapon_pof_inner=laser2-2.pof lw_ratio=9.8	\
+	simple_model=laser21s.pof simple_model=laser22s.pof \
+	mass=0.5 drag=0.0 blob_size=0.0 strength=11 11 11 11 11  flash_vclip=15 	flash_size=1.25  flash_sound=14 robot_hit_vclip=21 wall_hit_vclip=30 robot_hit_sound=11 wall_hit_sound=28 impact_size=3.0  speed=125 125 125 125 125	\
+	lighted=0 lightcast=1.0 \
+	energy_usage=0.5 ammo_usage=0.0 fire_wait=0.25 fire_count=1 lifetime=10.0
+
+; (2) Laser Level 3
+$WEAPON weapon_pof=laser3-1.pof	weapon_pof_inner=laser3-2.pof lw_ratio=9.8	\
+	simple_model=laser31s.pof simple_model=laser32s.pof \
+	mass=0.5 drag=0.0 blob_size=0.0 strength=12 12 12 12 12  flash_vclip=14 	flash_size=1.5  flash_sound=15 robot_hit_vclip=23 wall_hit_vclip=31 robot_hit_sound=11 wall_hit_sound=28 impact_size=3.0  speed=130 130 130 130 130	\
+	lighted=0 lightcast=1.25 \
+	energy_usage=0.5 ammo_usage=0.0 fire_wait=0.2 fire_count=1 lifetime=10.0
+
+; (3) Laser Level 4
+$WEAPON weapon_pof=laser4-1.pof	weapon_pof_inner=laser4-2.pof lw_ratio=9.8	\
+	simple_model=laser41s.pof simple_model=laser42s.pof \
+	mass=0.5 drag=0.0 blob_size=0.0 strength=13 13 13 13 13  flash_vclip=12 	flash_size=2.0  flash_sound=16 robot_hit_vclip=22 wall_hit_vclip=32 robot_hit_sound=11 wall_hit_sound=28 impact_size=3.0  speed=135 135 135 135 135	\
+	lighted=0 lightcast=1.75 \
+	energy_usage=0.5 ammo_usage=0.0 fire_wait=0.2 fire_count=1 lifetime=10.0
+
+; ---------- ROBOT BLOBS ----------
+; (4) Unknown Use
+$WEAPON weapon_vclip=55		mass=1.0 drag=0.0 blob_size=1.0 strength=2 3 4 5 6   flash_vclip=14 	flash_size=2.0  flash_sound=18 robot_hit_vclip=23 wall_hit_vclip=23 robot_hit_sound=11 wall_hit_sound=28 impact_size=2.5	speed=15 30 45 60 85 lightcast=1.0 lifetime=10.0 energy_usage=0.5 ammo_usage=0.0 
+
+; (5) Josh Blobs
+$WEAPON weapon_vclip=56		mass=1.0 drag=0.0 blob_size=1.0 strength=3 4 6 7 8   flash_vclip=11 	flash_size=2.5  flash_sound=19 robot_hit_vclip=59  wall_hit_vclip=59  robot_hit_sound=11 wall_hit_sound=28 impact_size=2.5	speed=15 30 45 60 85 lightcast=1.0 lifetime=10.0 energy_usage=0.5 ammo_usage=0.0 
+
+; (6) Unknown Use
+$WEAPON weapon_vclip=64		mass=1.0 drag=0.0 blob_size=1.0 strength=4 6 9 11 13 flash_vclip=11 	flash_size=3.0  flash_sound=22 robot_hit_vclip=59 wall_hit_vclip=1 robot_hit_sound=11 wall_hit_sound=28 impact_size=3.0	speed=15 30 45 60 85 lightcast=1.0 lifetime=10.0 energy_usage=0.5 ammo_usage=0.0 
+
+; (7) Unknown Use
+$WEAPON_UNUSED blob_bmp=blob04.bbm	mass=1.0 drag=0.0 blob_size=1.0 strength=8 10 14 16 18 flash_vclip=15 	flash_size=3.5  flash_sound=22 robot_hit_vclip=59  wall_hit_vclip=59  robot_hit_sound=11 wall_hit_sound=28 impact_size=2.5	speed=15 30 45 60 85 lightcast=1.0 lifetime=10.0 energy_usage=0.5 ammo_usage=0.0
+
+; (8) ---------- Concussion Missile ----------
+$WEAPON picture=gauge11.bbm weapon_pof=cmissile.pof	lw_ratio=10.0 mass=1.0 drag=0.0 blob_size=0.0 strength=30 30 30 30 30 flash_vclip=11 	flash_size=5.0 flash_sound=130 robot_hit_vclip=5  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=7.0  \
+	speed=90 90 90 90 90 matter=0 rbot044.bbm glow04.bbm lightcast=4.0 lifetime=10.0 damage_radius=30.0 destroyable=0 fire_count=1 fire_wait=0.5  energy_usage=0.0 ammo_usage=1.0 
+
+; (9) ---------- Flare ----------
+$WEAPON weapon_pof=flare.pof lw_ratio=5.0	\
+	mass=.1 drag=0.0 blob_size=0.0 strength=1 1 1 1 1 flash_vclip=11 flash_size=.5  flash_sound=23 robot_hit_vclip=59 robot_hit_sound=11 impact_size=1.0  speed=120 120 120 120 120	lighted=0 lightcast=3.0 lifetime=5.0 energy_usage=1.0 fire_count=1 fire_wait=1.15 %34
+
+; (10) ---------- Blue laser that blue guy shoots -----------
+$WEAPON weapon_pof=laser3-1.pof	weapon_pof_inner=laser3-2.pof lw_ratio=9.8	\
+	matter=0 mass=0.1 drag=0.0 blob_size=0.0 strength=2 3 3 4 6 flash_vclip=14 	flash_size=3.0  flash_sound=15 robot_hit_vclip=23 wall_hit_vclip=31 robot_hit_sound=11 wall_hit_sound=11 impact_size=3.0  speed=30 40 50 60 80 lighted=0 lightcast=1.0 lifetime=10.0 energy_usage=0.5 ammo_usage=0.0 
+
+; Notes on new fields:
+;	energy_usage	How much fuel is consumed to fire this weapon.
+;	ammo_usage	How many units of ammunition it uses per unit fired.
+;	fire_wait	Time until this weapon can be fired again.
+;	fire_count	Number of bursts fired from EACH GUN per firing.  For weapons which fire from both sides, 3*fire_count shots will be fired.
+
+; (11) ---------- Vulcan Cannon ----------
+; IMPORTANT NOTE: These should not have matter.  They are bullets, so it makes sense that they would,
+; but matter only matters because it gets moved by badass explosions.  Since you can't see these things, it doesn' matter, except
+; that having 20 of these bullets getting moved about will toast your frame rate!
+$WEAPON picture=gauge07.bbm none_bmp=blob01.bbm	mass=0.01 drag=0.0 blob_size=0.5 strength=4 4 4 4 4  flash_vclip=11 	flash_size=2.0  flash_sound=115 robot_hit_vclip=1 wall_hit_vclip=1 robot_hit_sound=11 impact_size=2.5  speed=500 500 500 500 500 lightcast=0.0 \
+	energy_usage=0.0 ammo_usage=1 fire_wait=0.05 fire_count=1 lifetime=3.0 destroyable=0
+
+; (12) ---------- Spreadfire Cannon ----------
+$WEAPON picture=gauge08.bbm blob_bmp=sprdblob.bbm	mass=0.2 drag=0.0 blob_size=0.5 strength=10 10 10 10 10  flash_vclip=14 	flash_size=2.0  flash_sound=18 robot_hit_vclip=23 wall_hit_vclip=23 robot_hit_sound=11 wall_hit_sound=11 impact_size=2.5  speed=120 120 120 120 120 lightcast=0.0 \
+	energy_usage=0.5 ammo_usage=0.0 fire_wait=0.2 fire_count=1 lifetime=10.0
+
+; (13) ---------- Plasma Cannon ----------
+@$WEAPON picture=gauge09.bbm weapon_vclip=54	mass=0.01 drag=0.0 blob_size=1.3 strength=11 11 11 11 11  flash_vclip=12 	flash_size=2.0  flash_sound=25 robot_hit_vclip=23 wall_hit_vclip=32 robot_hit_sound=11 wall_hit_sound=11 impact_size=3.5  speed=150 150 150 150 150 lightcast=2.0 \
+	energy_usage=0.50 ammo_usage=0.0 fire_wait=0.15 fire_count=1 lifetime=10.0
+
+; (14) ---------- Fusion Cannon ----------
+; Note: On January 26, 1995, Mike changed energy usage to be 0.  The fusion cannon is now a strange weapon
+;	that consumes energy based on how long the firing key is held down.
+@$WEAPON picture=gauge10.bbm weapon_pof=fusion1.pof weapon_pof_inner=fusion2.pof lw_ratio=1.0	\
+	mass=0.5 drag=0.0 blob_size=0.0 strength=60 60 60 60 60 flash_vclip=15 	flash_size=6.0  flash_sound=24 robot_hit_vclip=65 wall_hit_vclip=65 robot_hit_sound=11 wall_hit_sound=11 impact_size=5.0 \
+	speed=150 150 150 150 150 persistent=1 lighted=0 lightcast=5.0 \
+	energy_usage=0.0 ammo_usage=0.0 fire_wait=1.0 fire_count=1 lifetime=10.0
+
+; (15) ---------- Homing Missile ----------
+$WEAPON picture=gauge12.bbm weapon_pof=cmissile.pof lw_ratio=1.0 mass=1.0 blob_size=10.0 strength=40 40 40 40 40 flash_vclip=11 flash_size=5.0  flash_sound=130 robot_hit_vclip=5  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=7.0  speed=90 90 90 90 90 \
+	matter=0 energy_usage=0.0 ammo_usage=1.0 fire_wait=0.5 fire_count=1 lifetime=20.0 \
+	rbot045.bbm glow04.bbm lightcast=4.0 damage_radius=20.0 destroyable=0 homing=1
+
+; (16) ---------- Proximity Bomb ----------
+$WEAPON picture=gauge13.bbm weapon_vclip=53  mass=1.0 drag=0.033 thrust=0.0 blob_size=3.0 strength=30 30 30 30 30 flash_vclip=11 	flash_size=5.0  flash_sound=26 robot_hit_vclip=5  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=7.0  speed=0 0 0 0 0 \
+	bounce=1 energy_usage=0.0 ammo_usage=1.0 fire_wait=0.2 fire_count=1 lifetime=35.0 \
+	matter=1 lightcast=0.0 damage_radius=40.0 destroyable=1 
+
+; (17) ---------- Smart Missile ----------
+$WEAPON picture=gauge14.bbm weapon_pof=smissile.pof	lw_ratio=1.0 mass=1.0 drag=0.0 blob_size=10.0 strength=25 25 25 25 25 flash_vclip=11 	flash_size=5.0  flash_sound=130 robot_hit_vclip=5  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=7.0  speed=85 85 85 85 85	\
+	matter=0 energy_usage=0.0 ammo_usage=1.0 fire_wait=0.5 fire_count=1 lifetime=3.0 \
+	glow04.bbm rbot046.bbm lightcast=8.0 damage_radius=20.0 destroyable=0
+
+; (18) ---------- Mega Missile ----------
+@$WEAPON picture=gauge15.bbm weapon_pof=mmissile.pof lw_ratio=10.0 mass=1.0 drag=0.0 blob_size=0.0 strength=199 199 199 199 199 flash_vclip=11 	flash_size=5.0  flash_sound=132 robot_hit_vclip=63  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=30.0  speed=85 85 85 85 85	\
+	matter=0 glow04.bbm rbot047.bbm lightcast=8.0 lifetime=10.0 damage_radius=80.0 destroyable=0 fire_wait=0.5 energy_usage=0 ammo_usage=1.0  homing=1
+
+; (19) ---------- Children of the PLAYER'S Smart Missile ----------
+; Note: These are not matter, else when you blow up the smart bomb, a next hit on a child will blow up all of them.
+;	Don't make these have a damage radius or a damage force. --mk, 11/30/94
+$WEAPON weapon_vclip=54 lw_ratio=1.0 mass=1.0 drag=0.0 blob_size=1.5 strength=35 35 35 35 35 flash_vclip=11 	flash_size=5.0  flash_sound=12 robot_hit_vclip=5  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=7.0  speed=90 90 90 90 90 \
+	energy_usage=0.0 ammo_usage=1.0 fire_wait=1.5 fire_count=1 lifetime=12.0 \
+	glow04.bbm rbot046.bbm lightcast=1.0 damage_radius=0.0 destroyable=0 homing=1
+
+; (20) ---------- Bad Guy Spreadfire Laser ----------
+; ;;;Who knows where this weapon really is used anymore.... -Yuan 03/22/95
+; NOW : This is the new BAD GUY Spreadfire Cannon.
+$WEAPON picture=gauge08.bbm blob_bmp=sprdblob.bbm	mass=0.2 drag=0.0 blob_size=0.5 strength=10 10 10 10 10  flash_vclip=14 	flash_size=2.0  flash_sound=18 robot_hit_vclip=23 wall_hit_vclip=23 robot_hit_sound=11 wall_hit_sound=11 impact_size=2.5  speed=200 200 200 200 200 lightcast=0.0 \
+	energy_usage=1.0 ammo_usage=0.0 fire_wait=0.2 fire_count=1 lifetime=10.0
+
+; (21) ---------- SuperMech Homing Missile ----------
+$WEAPON picture=gauge13.bbm weapon_pof=cmissile.pof lw_ratio=1.0 mass=1.0 blob_size=10.0 strength=15 15 20 30 49 flash_vclip=11 flash_size=5.0  flash_sound=130 robot_hit_vclip=5  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=7.0  speed=60 60 60 60 80 \
+	matter=0 energy_usage=0.0 ammo_usage=1.0 fire_wait=0.5 fire_count=1 lifetime=20.0 \
+	rbot045.bbm glow04.bbm lightcast=4.0 damage_radius=40.0 destroyable=0 homing=1
+
+; (22) ---------- Regular Mech's missile -----------
+$WEAPON picture=gauge11.bbm weapon_pof=cmissile.pof	lw_ratio=10.0 mass=1.0 drag=0.0 blob_size=0.0 strength=10 15 20 30 50 flash_vclip=11 	flash_size=5.0  flash_sound=130 robot_hit_vclip=5  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=7.0  \
+	speed=40 50 60 70 95 matter=0 rbot044.bbm glow04.bbm lightcast=4.0 lifetime=10.0 damage_radius=40.0 destroyable=0 fire_count=1 fire_wait=0.5  energy_usage=0.0 ammo_usage=1.0 
+
+; (23) ---------- Silent Spreadfire Laser ----------
+; This is the silent version of the spreadfire so you can fire 3 blasts but have only one make a sound.
+$WEAPON picture=gauge08.bbm blob_bmp=sprdblob.bbm	mass=0.2 drag=0.0 blob_size=0.5 strength=12 12 12 12 12  flash_vclip=14 	flash_size=2.0  flash_sound=18 robot_hit_vclip=23 wall_hit_vclip=23 robot_hit_sound=11 wall_hit_sound=-1 impact_size=2.5  speed=200 200 200 200 200 lightcast=0.0 \
+	energy_usage=1.0 ammo_usage=0.0 fire_wait=0.2 fire_count=1 lifetime=10.0
+
+; (24) ---------- Red laser that baby spiders shoot -----------
+$WEAPON weapon_pof=laser1-1.pof	weapon_pof_inner=laser1-2.pof lw_ratio=9.8	\
+	matter=0 mass=0.1 drag=0.0 blob_size=0.0 strength=2 3 3 4 6  flash_vclip=11 	flash_size=3.0  flash_sound=15 robot_hit_vclip=59 wall_hit_vclip=1 robot_hit_sound=11 wall_hit_sound=28 impact_size=3.0  speed=30 40 50 60 80 lighted=0 lightcast=1.0 lifetime=10.0 energy_usage=0.5 ammo_usage=0.0 
+
+; (25) ---------- Green laser that rifleman shoots -----------
+$WEAPON weapon_pof=laser4-1.pof	weapon_pof_inner=laser4-2.pof lw_ratio=9.8	\
+	matter=0 mass=0.1 drag=0.0 blob_size=0.0 strength=2 3 3 4 6  flash_vclip=12 	flash_size=3.0  flash_sound=15 robot_hit_vclip=22 wall_hit_vclip=32 robot_hit_sound=11 wall_hit_sound=28 impact_size=3.0  speed=30 40 50 60 80 lighted=0 lightcast=1.0 lifetime=10.0 energy_usage=0.5 ammo_usage=0.0 
+
+; (26) ---------- Plasma gun that 'plasguy' fires ------------
+@$WEAPON picture=gauge09.bbm weapon_vclip=54	mass=0.01 drag=0.0 blob_size=1.3 strength=5 6 7 8 10  flash_vclip=12 	flash_size=2.0  flash_sound=18 robot_hit_vclip=23 wall_hit_vclip=32 robot_hit_sound=11 wall_hit_sound=11 impact_size=3.5  speed=80 90 100 120 150 lightcast=0.0 \
+	energy_usage=0.60 ammo_usage=0.0 fire_wait=0.15 fire_count=1 lifetime=10.0
+
+; (27) ---------- Blobs fired by Red Spiders -----------
+$WEAPON weapon_vclip=56		mass=2.0 drag=0.0 blob_size=1.0 strength=5 6 8 12 18  flash_vclip=11 	flash_size=2.5  flash_sound=19 robot_hit_vclip=59  wall_hit_vclip=59  robot_hit_sound=11 wall_hit_sound=28 impact_size=2.5	speed=15 30 45 60 80 lightcast=1.0 lifetime=10.0 energy_usage=0.5 ammo_usage=0.0 
+
+; (28) ---------- Final Boss's Mega Missile ----------
+@$WEAPON picture=gauge15.bbm weapon_pof=mmissile.pof lw_ratio=10.0 mass=1.0 drag=0.0 blob_size=0.0 strength=80 80 80 120 150 flash_vclip=11 	flash_size=5.0  flash_sound=132 robot_hit_vclip=63  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=30.0  speed=85 85 85 85 85	\
+	matter=0 glow04.bbm rbot047.bbm lightcast=8.0 lifetime=10.0 damage_radius=80.0 destroyable=0 fire_wait=0.5 energy_usage=0 ammo_usage=1.0  homing=1
+
+; (29) ---------- Children of the ROBOT'S Smart Missile ----------
+; Note: These are not matter, else when you blow up the smart bomb, a next hit on a child will blow up all of them.
+;	Don't make these have a damage radius or a damage force. --mk, 11/30/94
+$WEAPON weapon_vclip=54 lw_ratio=1.0 mass=1.0 drag=0.0 blob_size=1.5 strength=11 12 13 14 15 flash_vclip=11 	flash_size=5.0  flash_sound=12 robot_hit_vclip=5  wall_hit_vclip=5  robot_hit_sound=11 wall_hit_sound=11 impact_size=7.0  speed=90 90 90 90 90 \
+	energy_usage=0.0 ammo_usage=1.0 fire_wait=1.5 fire_count=1 lifetime=8.0 \
+	glow04.bbm rbot046.bbm lightcast=1.0 damage_radius=0.0 destroyable=0 homing=1
+
+
+;$HOSTAGE model=hostage.pof rescued_vclip_num=8 rescued_sound_num=91 rbot022.bbm rbot024.bbm rbot023.bbm rbot026.bbm rbot025.bbm rbot027.bbm
+;$HOSTAGE bitmap=misc009.bbm rescued_vclip_num=8 rescued_sound_num=91
+;;!!$HOSTAGE vclip_num=33 rescued_vclip_num=8 rescued_sound_num=91 
+@$HOSTAGE vclip_num=33
+
+;@$HOSTAGE_FACE face01.abm clip_num=0 time=2.1 abm_flag=1 sound_num=-1
+;@$HOSTAGE_FACE face02.abm clip_num=1 time=2.1 abm_flag=1 sound_num=-1
+;we need the rest of these...
+
+;Default size of powerup is 3.0
+		      
+$POWERUP name="Life"	vclip_num=36 hit_sound=82 size=2.5	; extra life
+$POWERUP name="Energy"	vclip_num=18 hit_sound=81 light=3.0	; energy 
+$POWERUP name="Shield"	vclip_num=19 hit_sound=80 size=2.5	; shield
+$POWERUP name="Laser"	vclip_num=20 hit_sound=83 size=4.0	; laser
+$POWERUP name="BlueKey"	vclip_num=24 hit_sound=83		; blue key
+$POWERUP name="RedKey"	vclip_num=26 hit_sound=83		; red key
+$POWERUP name="YelKey"	vclip_num=25 hit_sound=83		; yellow key
+$POWERUP_UNUSED name="R_Pill"	vclip_num=27 hit_sound=83		; radar-robot-shower
+$POWERUP_UNUSED name="P_Pill"	vclip_num=28 hit_sound=83		; radar-powerup-shower
+$POWERUP_UNUSED name="M_Pill"	vclip_num=29 hit_sound=83		; full-map
+
+;the sizes of the next two were added for testing/demonstration purposes 
+;and are not meant to be the real sizes. - Matt
+$POWERUP name="Cmiss_1"	vclip_num=34 hit_sound=83 size=2.5	; 1 missile
+$POWERUP name="Cmiss_4"	vclip_num=35 hit_sound=83 		; 4 missiles
+$POWERUP name="QudLas"	vclip_num=51 hit_sound=83		; 4 missiles
+$POWERUP name="Vulcan"	vclip_num=37 hit_sound=83 size=4.0	; 4 missiles
+$POWERUP name="Sprdfr"	vclip_num=38 hit_sound=83 size=4.0	; 4 missiles
+$POWERUP name="Plasma"	vclip_num=39 hit_sound=83 size=4.0	; 4 missiles
+$POWERUP name="Fusion"	vclip_num=40 hit_sound=83 size=4.0	; 4 missiles
+$POWERUP name="Proxim"	vclip_num=41 hit_sound=83 		; 4 missiles
+$POWERUP name="Hmiss_1"	vclip_num=42 hit_sound=83 size=2.5	; 4 missiles
+$POWERUP name="Hmiss_4"	vclip_num=43 hit_sound=83 		; 4 missiles
+
+$POWERUP name="Smiss"	vclip_num=44 hit_sound=83 size=2.5	; 4 missiles
+$POWERUP name="Mmiss"	vclip_num=45 hit_sound=83 		; 4 missiles
+$POWERUP name="V_Ammo"	vclip_num=46 hit_sound=83 size=1.8	; 4 missiles
+$POWERUP name="Cloak"	vclip_num=47 hit_sound=160 size=2.0	; 4 missiles
+$POWERUP_UNUSED name="Turbo"	vclip_num=48 hit_sound=83 		; 4 missiles
+$POWERUP name="Invuln"	vclip_num=49 hit_sound=162 size=2.6	; 4 missiles
+$POWERUP_UNUSED name="Headli"	vclip_num=50 hit_sound=83		; 4 missiles
+$POWERUP_UNUSED name="Megwow"	vclip_num=52 hit_sound=83		; everything!
+
+
+;NOTE:
+; Three vclips are referenced explicitely by the code (in VCLIP.H) so their
+; numbers cannot change without changing the code.  These three are:
+;   2  VCLIP_SMALL_EXPLOSION
+;   9  VCLIP_PLAYER_HIT
+;  10  VCLIP_MORPHING_ROBOT
+
+; Explosion video clips.
+$VCLIP clip_num=0 time=1.0 abm_flag=1 vlighting=10.0 sound_num=-1
+exp13.abm	; used to be exp07.abm
+
+; Weapon spark #1.
+$VCLIP clip_num=1 time=0.50 abm_flag=1 vlighting=3.0 sound_num=-1
+spark01.abm
+
+;NOTE: Do not change this vclip number without changing VCLIP.H
+$VCLIP clip_num=2 time=0.50 abm_flag=1 vlighting=3.0 sound_num=-1
+exp18.abm
+
+$VCLIP clip_num=3 time=1.0 abm_flag=1 vlighting=10.0 sound_num=157
+exp20.abm
+
+;missile impact explosion
+$VCLIP clip_num=5 time=.75 abm_flag=1 vlighting=10.0 sound_num=-1
+exp06.abm
+
+$VCLIP clip_num=7 time=0.9 abm_flag=1 vlighting=7.0 sound_num=-1
+exp15.abm
+
+;NOTE: Do not change this vclip number without changing VCLIP.H
+$VCLIP clip_num=9 time=0.50 abm_flag=1 vlighting=3.0 sound_num=-1  ; player hit
+spark05.abm
+
+; Robot materialization effect
+;NOTE: Do not change this vclip number without changing VCLIP.H
+; NOTE: THIS IS THE ONLY VCLIP AS OF NOW THAT USES ITS SOUND!
+$VCLIP clip_num=10 time=1.0 rod_flag=1 abm_flag=1 vlighting=10.0 sound_num=92		
+mtrl01.abm
+
+; Muzzle flashes
+$VCLIP clip_num=11 time=0.3 abm_flag=1 vlighting=4.0 sound_num=-1
+muzl02.abm
+
+$VCLIP clip_num=12 time=0.4 abm_flag=1 vlighting=4.0 sound_num=-1
+muzl03.abm
+				      
+$VCLIP clip_num=14 time=0.3 abm_flag=1 vlighting=4.0 sound_num=-1
+muzl05.abm
+
+$VCLIP clip_num=15 time=0.3 abm_flag=1 vlighting=4.0 sound_num=-1
+muzl06.abm
+
+;POW_ENERGY
+$VCLIP clip_num=18 time=0.5 abm_flag=1 vlighting=1.0 sound_num=-1
+pwr01.abm
+
+;POW_SHIELD_BOOST
+$VCLIP clip_num=19 time=0.5 abm_flag=1 vlighting=1.0 sound_num=-1
+pwr02.abm
+
+;POW_LASER
+$VCLIP clip_num=20 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+laser.abm
+
+;more explosions
+$VCLIP clip_num=21 time=0.5 abm_flag=1 vlighting=3.0 sound_num=-1
+exp09.abm
+
+$VCLIP clip_num=22 time=0.5 abm_flag=1 vlighting=3.0 sound_num=-1
+exp10.abm
+
+$VCLIP clip_num=23 time=0.5 abm_flag=1 vlighting=3.0 sound_num=-1
+exp11.abm
+
+;KEY_BLUE
+$VCLIP clip_num=24 time=1.0 abm_flag=1 vlighting=1.0 sound_num=-1
+key01.abm
+
+;KEY_RED
+$VCLIP clip_num=25 time=1.0 abm_flag=1 vlighting=1.0 sound_num=-1
+key02.abm
+
+;KEY_YELLOW
+$VCLIP clip_num=26 time=1.0 abm_flag=1 vlighting=1.0 sound_num=-1
+key03.abm
+
+; Weapon spark #2.
+$VCLIP clip_num=30 time=0.5 abm_flag=1 vlighting=3.0 sound_num=-1
+spark02.abm
+
+; Weapon spark #3.
+$VCLIP clip_num=31 time=0.5 abm_flag=1 vlighting=3.0 sound_num=-1
+spark03.abm
+
+; Weapon spark #4.
+$VCLIP clip_num=32 time=0.5 abm_flag=1 vlighting=3.0 sound_num=-1
+spark04.abm	
+
+; Animating hostage
+$VCLIP clip_num=33 time=1.5 abm_flag=1 vlighting=3.0 sound_num=-1
+hostage.abm	
+
+;1 MISSILE
+$VCLIP clip_num=34 time=1.0 abm_flag=1 vlighting=1.0 sound_num=-1
+cmissil1.abm
+
+;4 MISSILES
+$VCLIP clip_num=35 time=1.1 abm_flag=1 vlighting=1.0 sound_num=-1
+cmissil2.abm
+
+;NEW EXTRA-LIFE POWERUP
+$VCLIP clip_num=36 time=.75 abm_flag=1 vlighting=1.0 sound_num=-1
+life01.abm
+
+; some are TEMPORARY weapon powerups
+$VCLIP clip_num=37 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+vulcan.abm
+$VCLIP clip_num=38 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+spread.abm
+@$VCLIP clip_num=39 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+@plasma.abm
+@$VCLIP clip_num=40 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+@fusion.abm
+$VCLIP clip_num=41 time=.75 abm_flag=1 vlighting=1.0 sound_num=-1
+pbombs.abm
+$VCLIP clip_num=42 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+hmissil1.abm
+$VCLIP clip_num=43 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+hmissil2.abm
+@$VCLIP clip_num=44 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+@smissile.abm
+@$VCLIP clip_num=45 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+@mmissile.abm
+$VCLIP clip_num=46 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+vammo.abm
+$VCLIP clip_num=47 time=0.8 abm_flag=1 vlighting=1.0 sound_num=-1
+cloak.abm
+$VCLIP clip_num=49 time=0.8 abm_flag=1 vlighting=1.0 sound_num=-1
+invuln.abm
+$VCLIP clip_num=51 time=1.5 abm_flag=1 vlighting=1.0 sound_num=-1
+quad.abm
+$VCLIP clip_num=53 time=0.5 abm_flag=1 vlighting=-1 sound_num=-1
+pbomb.abm
+$VCLIP clip_num=54 time=0.75 abm_flag=1 vlighting=1.0 sound_num=-1
+plasblob.abm
+;;$VCLIP clip_num=54 time=0.75 abm_flag=1 vlighting=1.0 sound_num=-1
+;;bossplas.abm
+$VCLIP clip_num=55 time=0.5 abm_flag=1 vlighting=4.0 sound_num=-1
+blob01.abm
+$VCLIP clip_num=56 time=0.5 abm_flag=1 vlighting=4.0 sound_num=-1
+blob02.abm
+
+;next one is EXPLOSION FOR PLAYER'S SHIP ONLY!
+$VCLIP clip_num=58 time=0.88 abm_flag=1 vlighting=6.0 sound_num=-1
+exp17.abm
+$VCLIP clip_num=59 time=.5 abm_flag=1 vlighting=2.0 sound_num=-1
+exp03.abm
+$VCLIP clip_num=60 time=0.87 abm_flag=1 vlighting=2.0 sound_num=-1
+exp19.abm
+
+$VCLIP clip_num=61 time=.8 abm_flag=1 vlighting=2.0 sound_num=92
+mtrl02.abm
+$VCLIP clip_num=62 time=.7 abm_flag=1 vlighting=2.0 sound_num=93
+mtrl03.abm
+
+;mega missile explosion only
+@$VCLIP clip_num=63 time=.50 abm_flag=1 vlighting=90.0 sound_num=92
+@exp21.abm
+;reactor weapon
+$VCLIP clip_num=64 time=0.5 abm_flag=1 vlighting=4.0 sound_num=-1
+blob03.abm
+;fusion impact
+$VCLIP clip_num=65 time=0.4 abm_flag=1 vlighting=4.0 sound_num=-1
+exp22.abm
+
+$TEXTURES
+; Rock walls
+
+rock001.bbm
+rock021.bbm
+@rock001.bbm
+rock071.bbm
+@rock001.bbm
+@rock001.bbm
+rock002.bbm 
+@rock265.bbm
+rock004.bbm
+@rock005.bbm
+rock006.bbm
+rock007.bbm
+rock013.bbm
+rock014.bbm
+rock019.bbm
+@rock020.bbm
+rock022.bbm
+rock024.bbm
+@rock025.bbm
+@rock026.bbm
+@rock042.bbm
+@rock043.bbm
+rock057.bbm
+rock059.bbm
+rock060.bbm
+rock064.bbm
+@rock065.bbm
+@rock066.bbm
+@rock070.bbm
+@rock072.bbm
+@rock073.bbm
+rock074.bbm
+@rock080.bbm
+@rock081.bbm
+@rock082.bbm
+@rock083.bbm
+@rock084.bbm
+@rock086.bbm
+rock095.bbm
+@rock097.bbm
+rock098.bbm
+@rock100.bbm
+rock101.bbm
+@rock102.bbm
+@rock105.bbm
+rock106.bbm
+rock107.bbm
+rock108.bbm
+rock113.bbm
+rock117.bbm
+@rock131.bbm
+rock133.bbm
+rock134.bbm
+rock139.bbm
+@rock141.bbm
+@rock142.bbm
+rock143.bbm
+@rock144.bbm
+rock146.bbm
+rock147.bbm
+rock149.bbm
+rock150.bbm
+rock152.bbm
+@rock155.bbm
+rock156.bbm
+rock159.bbm
+rock160.bbm
+rock162.bbm
+rock164.bbm
+@rock165.bbm
+rock168.bbm
+rock169.bbm
+@rock170.bbm
+rock171.bbm
+@rock172.bbm
+rock173.bbm
+rock174.bbm
+rock175.bbm
+@rock176.bbm
+@rock177.bbm
+@rock178.bbm
+rock179.bbm
+rock180.bbm
+rock181.bbm
+@rock182.bbm
+rock184.bbm
+rock185.bbm
+rock186.bbm
+rock187.bbm
+@rock188.bbm
+rock189.bbm
+rock190.bbm
+rock191.bbm
+@rock192.bbm
+rock193.bbm
+rock194.bbm
+@rock195.bbm
+@rock196.bbm
+rock198.bbm
+rock200.bbm
+@rock201.bbm
+@rock202.bbm
+rock203.bbm
+@rock204.bbm
+@rock205.bbm
+@rock206.bbm
+rock207.bbm
+rock208.bbm
+rock209.bbm
+@rock210.bbm
+@rock211.bbm
+@rock212.bbm
+@rock214.bbm
+rock215.bbm
+@rock216.bbm
+@rock217.bbm
+rock218.bbm
+@rock220.bbm
+@rock221.bbm
+@rock222.bbm
+rock223.bbm
+@rock224.bbm
+@rock225.bbm
+rock226.bbm
+@rock227.bbm
+@rock228.bbm
+rock229.bbm
+rock230.bbm
+@rock231.bbm
+rock232.bbm
+rock233.bbm
+@rock234.bbm
+@rock235.bbm
+rock236.bbm
+@rock237.bbm
+rock239.bbm
+@rock242.bbm
+@rock243.bbm
+@rock244.bbm
+@rock245.bbm
+@rock246.bbm
+@rock250.bbm
+rock251.bbm
+rock252.bbm
+@rock253.bbm
+rock254.bbm
+rock255.bbm
+@rock257.bbm
+@rock258.bbm
+rock259.bbm
+rock260.bbm
+rock261.bbm
+rock262.bbm
+@rock263.bbm
+@rock264.bbm
+@rock269.bbm
+
+!METALS_FLAG
+; Metal walls
+
+metl002.bbm
+@metl003.bbm
+@metl004.bbm
+@metl006.bbm
+@metl008.bbm
+metl009.bbm
+metl011.bbm
+metl013.bbm
+metl014.bbm
+metl015.bbm
+metl016.bbm
+@metl017.bbm
+@metl018.bbm
+@metl019.bbm
+metl020.bbm
+metl021.bbm
+metl023.bbm
+@metl024.bbm
+@metl026.bbm
+@metl029.bbm
+metl030.bbm
+@metl031.bbm
+metl033.bbm
+metl035.bbm
+@metl036.bbm
+metl039.bbm
+@metl040.bbm
+@metl041.bbm
+@metl042.bbm
+@metl043.bbm
+metl045.bbm
+@metl046.bbm
+metl047.bbm
+@metl048.bbm
+@metl049.bbm
+metl050.bbm
+metl053.bbm
+@metl054.bbm
+metl055.bbm
+@metl058.bbm
+@metl059.bbm
+@metl060.bbm
+@metl061.bbm
+@metl063.bbm
+@metl064.bbm
+@metl065.bbm
+@metl066.bbm
+metl068.bbm
+@metl070.bbm
+metl071.bbm
+metl074.bbm
+metl076.bbm
+metl077.bbm
+metl012.bbm
+@metl028.bbm
+metl057.bbm
+metl078.bbm	lighting=0.75
+metl079.bbm	lighting=0.31
+metl080.bbm	lighting=0.31
+@metl081.bbm
+@metl082.bbm
+@metl083.bbm
+metl086.bbm
+metl087.bbm
+metl088.bbm
+@metl089.bbm	lighting=0.31
+@metl090.bbm	lighting=0.31
+@metl095.bbm
+@metl096.bbm
+@metl097.bbm
+metl098.bbm
+@metl099.bbm
+@metl100.bbm
+metl103.bbm
+@metl104.bbm
+@metl105.bbm
+@metl106.bbm
+@metl109.bbm
+@metl110.bbm
+@metl111.bbm
+@metl112.bbm
+@metl113.bbm
+@metl114.bbm
+@metl116.bbm
+@metl118.bbm
+metl119.bbm
+@metl120.bbm
+@metl121.bbm
+@metl123.bbm
+@metl125.bbm
+metl127.bbm	superx=254
+@metl128.bbm
+@metl129.bbm
+@metl130.bbm
+metl126.bbm	lighting=0.90
+metl133.bbm	lighting=0.5
+metl134.bbm	lighting=0.5
+metl135.bbm	lighting=0.5
+metl136.bbm
+metl139.bbm
+metl140.bbm
+
+brig001.bbm
+brig002.bbm
+brig003.bbm
+brig004.bbm
+exit01.bbm
+exit02.bbm
+
+!LIGHTS_FLAG
+; Ceiling textures.
+@ceil001.bbm
+ceil002.bbm	lighting=0.93	; Lit large square.
+@ceil003.bbm	lighting=0.875
+ceil005.bbm
+@ceil006.bbm
+ceil008.bbm	lighting=0.875
+ceil009.bbm
+ceil014.bbm
+ceil015.bbm
+ceil016.bbm
+ceil017.bbm
+ceil018.bbm
+ceil019.bbm
+ceil037.bbm
+@ceil038.bbm
+ceil020.bbm	lighting=0.9
+ceil021.bbm	lighting=0.9
+@ceil023.bbm	lighting=0.7
+ceil024.bbm	lighting=0.875
+ceil025.bbm	lighting=0.7
+ceil026.bbm	lighting=0.63
+ceil027.bbm	lighting=0.63
+ceil028.bbm	lighting=0.7
+ceil029.bbm	lighting=0.875
+ceil030.bbm	lighting=0.875
+ceil031.bbm	lighting=0.875
+empty.bbm	lighting=0.875
+@ceil032.bbm
+@ceil033.bbm
+@ceil034.bbm	lighting=0.650
+ceil035.bbm	lighting=0.6
+@ceil036.bbm	lighting=0.8
+
+; Miscellaneous textures.
+@misc001.bbm
+@misc002.bbm
+misc007.bbm
+@misc010.bbm
+misc011.bbm
+misc012.bbm
+@misc019.bbm
+misc029.bbm
+@misc030.bbm
+@misc032.bbm
+misc033.bbm
+@misc034.bbm
+@misc035.bbm
+misc036.bbm
+@misc037.bbm	superx=254
+@misc039.bbm
+@misc040.bbm
+misc041.bbm
+misc042.bbm
+misc043.bbm
+misc044.bbm
+misc045.bbm
+@misc046.bbm
+@misc048.bbm
+misc050.bbm
+@misc055.bbm
+misc058.bbm
+misc059.bbm
+misc063.bbm
+misc075.bbm	superx=254
+@fan03.bbm	superx=254
+fram06.bbm
+
+
+;-------------------------------------------------------------
+!EFFECTS_FLAG
+$EFFECTS Num_effects=54
+
+$ECLIP clip_num=0 time=0.40 abm_flag=1
+arw01.abm
+
+$ECLIP clip_num=2 time=1.0 abm_flag=1 vlighting=-1		;; this is the refuel effect  it does not get lit (darkened)
+misc17.abm	lighting=0.875
+
+$ECLIP clip_num=3 time=0.4 abm_flag=1 sound_num=121
+fan01.abm	superx=254
+
+@$ECLIP clip_num=5 time=0.50 abm_flag=1 crit_clip=48 dest_bm=blown06.bbm dest_vclip=3 dest_size=20 dest_eclip=40
+@mntr04.abm
+
+@$ECLIP clip_num=9 time=0.75 abm_flag=1
+@misc09.abm
+
+$ECLIP clip_num=10 time=0.75 abm_flag=1
+misc11.abm	lighting=0.8 damage=10 volatile 
+
+@$ECLIP clip_num=12 time=0.20 abm_flag=1
+@ctrl04.abm	lighting=0.01
+		 
+$ECLIP clip_num=13 time=0.20 abm_flag=1
+ctrl01.abm	lighting=0.01
+
+@$ECLIP clip_num=14 time=0.20 abm_flag=1
+@ctrl02.abm	lighting=0.01
+
+@$ECLIP clip_num=15 time=0.20 abm_flag=1
+@ctrl03.abm	lighting=0.01
+
+$ECLIP clip_num=16 time=0.75 abm_flag=1
+misc14.abm
+
+$ECLIP clip_num=17 time=0.75 abm_flag=1
+misc16.abm
+
+@$ECLIP clip_num=19 time=0.20 abm_flag=1
+@misc049.abm
+
+;NOTE: the sound for an effect destruction comes from the vclip
+$ECLIP clip_num=20 time=0.40 abm_flag=1 crit_clip=42 dest_bm=blown01.bbm dest_vclip=3 dest_size=20 dest_eclip=35
+misc060.abm
+
+$ECLIP clip_num=21 time=0.40 abm_flag=1 crit_clip=43 dest_bm=blown02.bbm dest_vclip=3 dest_size=20 dest_eclip=36
+misc061.abm
+      
+$ECLIP clip_num=22 time=0.40 abm_flag=1 crit_clip=44 dest_bm=blown07.bbm dest_vclip=3 dest_size=20 dest_eclip=41
+misc062.abm					  
+
+$ECLIP clip_num=23 time=0.40 abm_flag=1 crit_clip=45 dest_bm=blown03.bbm dest_vclip=3 dest_size=20 dest_eclip=37
+misc065.abm
+
+$ECLIP clip_num=24 time=0.60 abm_flag=1 crit_clip=46 dest_bm=blown04.bbm dest_vclip=3 dest_size=20 dest_eclip=38
+misc066.abm
+      
+@$ECLIP clip_num=25 time=0.80 abm_flag=1 crit_clip=46 dest_bm=blown04.bbm dest_vclip=3 dest_size=20 dest_eclip=38
+@misc067.abm
+
+$ECLIP clip_num=26 time=1.80 abm_flag=1 crit_clip=47 dest_bm=blown05.bbm dest_vclip=3 dest_size=20 dest_eclip=39
+misc068.abm
+
+@$ECLIP clip_num=27 time=1.80 abm_flag=1 crit_clip=47 dest_bm=blown05.bbm dest_vclip=3 dest_size=20 dest_eclip=39
+@misc069.abm
+
+$ECLIP clip_num=29 time=0.20 abm_flag=1
+misc073.abm	lighting=0.40
+
+;;$ECLIP clip_num=30 time=0.5 abm_flag=1 obj_eclip=1
+;;glow04.abm
+
+$ECLIP clip_num=31 time=0.8 abm_flag=1 obj_eclip=1
+eye01.abm
+
+$ECLIP clip_num=32 time=0.01 abm_flag=1 obj_eclip=1
+glow02.abm
+
+@$ECLIP clip_num=33 time=0.65 abm_flag=1
+@lava02.abm	lighting=1.0 damage=10 volatile  
+
+$ECLIP clip_num=34 time=0.01 abm_flag=1	obj_eclip=1 vlighting=-1
+flare.abm	lighting=1.0
+
+;next 6 are exploding monitor clips.
+
+$ECLIP clip_num=35 time=0.5 abm_flag=1
+misc060b.abm	lighting=2.0
+
+$ECLIP clip_num=36 time=0.5 abm_flag=1
+misc061b.abm	lighting=2.0
+
+$ECLIP clip_num=37 time=0.5 abm_flag=1
+misc065b.abm	lighting=2.0
+
+$ECLIP clip_num=38 time=0.5 abm_flag=1
+misc066b.abm	lighting=2.0
+
+$ECLIP clip_num=39 time=0.5 abm_flag=1
+misc068b.abm	lighting=2.0
+
+$ECLIP clip_num=40 time=0.5 abm_flag=1
+mntr04b.abm	lighting=2.0
+
+$ECLIP clip_num=41 time=0.5 abm_flag=1
+misc062b.abm	lighting=2.0
+
+;mine critical monitor clips below
+$ECLIP clip_num=42 time=0.5 abm_flag=1
+misc060d.abm	lighting=2.0
+
+$ECLIP clip_num=43 time=0.5 abm_flag=1
+misc061d.abm	lighting=2.0
+
+$ECLIP clip_num=44 time=0.5 abm_flag=1
+misc062d.abm	lighting=2.0
+
+$ECLIP clip_num=45 time=0.5 abm_flag=1
+misc065d.abm	lighting=2.0
+
+$ECLIP clip_num=46 time=0.5 abm_flag=1
+misc066d.abm	lighting=2.0
+
+$ECLIP clip_num=47 time=0.5 abm_flag=1
+misc068d.abm	lighting=2.0
+
+$ECLIP clip_num=48 time=0.5 abm_flag=1
+mntr04d.abm	lighting=2.0
+
+$ECLIP clip_num=49 time=0.5 abm_flag=1 obj_eclip=1
+eye02.abm	lighting=2.0
+
+$ECLIP clip_num=50 time=0.5 abm_flag=1 obj_eclip=1
+rmap01.abm	lighting=2.0
+
+$ECLIP clip_num=51 time=0.5 abm_flag=1 obj_eclip=1
+rmap02.abm	lighting=2.0
+
+$ECLIP clip_num=52 time=0.5 abm_flag=1 obj_eclip=1
+rmap04.abm	lighting=2.0
+
+$ECLIP clip_num=53 time=1.3 abm_flag=1 obj_eclip=1
+boss02.abm	lighting=2.0
+
+$ECLIP clip_num=54 time=1.0 abm_flag=1 obj_eclip=1
+eye03.abm	lighting=2.0
+
+;----------------------------------------------------------------
+; 03/04/93  Doors and walls should come after effects.
+; 		There is a bug which messes up effects if they don't.
+
+$WALL_ANIMS 	Num_wall_anims=26
+
+@$WCLIP clip_num=0 abm_flag=1 vlighting=0 tmap1_flag=1 blastable=1 explodes=1		; vlighting=0 means to cast light on this wclip
+@wall01.abm
+
+$WCLIP clip_num=1 time=1 abm_flag=1 open_sound=140 close_sound=141 vlighting=0
+door01.abm	superx=254
+
+;wall 2 was deleted
+
+$WCLIP clip_num=3 time=1 abm_flag=1 open_sound=142 close_sound=143 vlighting=0
+door04.abm	superx=254
+		
+$WCLIP clip_num=4 time=1 abm_flag=1 open_sound=144 close_sound=145 vlighting=0
+door05.abm	superx=254
+
+@$WCLIP clip_num=5 time=1 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+@door10.abm
+
+$WCLIP clip_num=6 time=1 abm_flag=1 tmap1_flag=1 open_sound=140 close_sound=141 vlighting=0 blastable=1 explodes=1
+door24.abm
+
+@$WCLIP clip_num=7 time=1 abm_flag=1 open_sound=142 close_sound=143 vlighting=0
+@door08.abm	superx=254
+
+;wall 8 was deleted
+
+@$WCLIP clip_num=9 time=1.6 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+@door11.abm
+
+$WCLIP clip_num=10 time=1.1 abm_flag=1 open_sound=142 close_sound=143 vlighting=0
+door13.abm	superx=254
+
+$WCLIP clip_num=11 time=0.9 abm_flag=1 open_sound=144 close_sound=145 vlighting=0
+door12.abm	superx=254
+
+@$WCLIP clip_num=12 time=0.8 abm_flag=1 open_sound=144 close_sound=145 vlighting=0
+@door14.abm	superx=254
+
+$WCLIP clip_num=13 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+door17.abm
+
+@$WCLIP clip_num=14 time=0.9 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+@door18.abm
+
+$WCLIP clip_num=15 time=0.9 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+door19.abm
+
+@$WCLIP clip_num=16 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+@door20.abm
+
+$WCLIP clip_num=17 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+door21.abm
+
+$WCLIP clip_num=18 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+door22.abm
+
+$WCLIP clip_num=19 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+door23.abm
+
+@$WCLIP clip_num=20 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+@door25.abm
+
+@$WCLIP clip_num=21 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+@door26.abm
+
+@$WCLIP clip_num=22 time=0.8 abm_flag=1 open_sound=148 close_sound=149 vlighting=0
+@door28.abm	superx=254
+
+$WCLIP clip_num=23 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+door29.abm
+
+@$WCLIP clip_num=24 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+@door30.abm
+
+$WCLIP clip_num=25 time=1.0 abm_flag=1 tmap1_flag=1 open_sound=146 close_sound=147 vlighting=0 hidden=1
+door31.abm

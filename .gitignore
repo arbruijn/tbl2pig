@@ -1,0 +1,8 @@
+*.obj
+*~
+*.exe
+*.err
+*.bak
+*.pig
+*.o
+tbl2pig
